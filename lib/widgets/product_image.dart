@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 class ProductImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Padding(
+    return Padding(
           padding: EdgeInsets.only( left: 10, right: 10, top: 10),
           child: Container(
             decoration: _buildBoxDecoration(),
@@ -19,8 +18,7 @@ class ProductImage extends StatelessWidget {
               ),
             ),
           ),
-        ),
-    );
+        );
   }
 
   BoxDecoration _buildBoxDecoration() => BoxDecoration(
