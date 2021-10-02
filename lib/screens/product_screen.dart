@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:productos_app/providers/product_form_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:productos_app/services/services.dart';
@@ -30,6 +31,7 @@ class _ProductScreenBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        // keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         child: Column(
           children: [
             Stack(
@@ -107,6 +109,9 @@ class _ProductForm extends StatelessWidget {
 
                 TextFormField(
                   initialValue: '${product.price}',
+                  inputFormatters: [
+                    FilteringTextInputFormatter.allow(RegExp(r'^(\d+)?\.?\d{0,2}'))
+                  ],
                   onChanged: (value) {
                     if( double.tryParse(value) == null) {
                       product.price = 0;
@@ -126,9 +131,7 @@ class _ProductForm extends StatelessWidget {
                     value: product.available,
                     title: Text('Disponible'),
                     activeColor: Colors.indigo,
-                    onChanged: (value) {
-//                      //TODO: pendiente
-                    }
+                    onChanged: productForm.updateAvailability
                 ),
                 SizedBox(height: 30),
               ],
