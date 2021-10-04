@@ -65,11 +65,14 @@ class _ProductScreenBody extends StatelessWidget {
           ],
         ),
       ),
+
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       floatingActionButton: FloatingActionButton(
         child: Icon (Icons.save_outlined),
-        onPressed: () {
-          productForm.isValidForm();
+        onPressed: () async{
+          if( !productForm.isValidForm() ) return;
+
+          await productService.saveOrCreateProduct(productForm.product);
         },
       ),
     );
@@ -92,6 +95,7 @@ class _ProductForm extends StatelessWidget {
         decoration: _buildBoxDecoration(),
         child: Form(
           key: productForm.formKey,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
             child: Column(
               children: [
 
