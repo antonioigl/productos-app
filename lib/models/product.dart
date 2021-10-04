@@ -41,6 +41,7 @@ class Product {
   Product copy () => Product(
       available: this.available,
       name: this.name,
+      picture: this.picture,
       price: this.price,
       id: this.id
   );
