@@ -54,7 +54,6 @@ class ProductsService extends ChangeNotifier {
       await this.updateProduct(product);
     }
 
-
     isSaving = false;
     notifyListeners();
 
