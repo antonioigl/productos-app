@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:productos_app/screens/screens.dart';
-import 'package:productos_app/services/products_service.dart';
 import 'package:provider/provider.dart';
+
+import 'package:productos_app/screens/screens.dart';
+import 'package:productos_app/services/services.dart';
 
 void main() => runApp(AppState());
 
@@ -11,7 +12,8 @@ class AppState extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
-          ChangeNotifierProvider(create: ( _ ) => ProductsService())
+          ChangeNotifierProvider(create: ( _ ) => AuthService()),
+          ChangeNotifierProvider(create: ( _ ) => ProductsService()),
         ],
       child: MyApp(),
     );
